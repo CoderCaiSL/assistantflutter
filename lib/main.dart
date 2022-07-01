@@ -1,33 +1,68 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-void main() => runApp(const MyApp());
+import 'package:assistantflutter/jin10/page/jin10_home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:sp_util/sp_util.dart';
+import 'package:provider/provider.dart';
+
+import 'app_theme.dart';
+import 'provider/calendar_model.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //加密方式初始化
+  await SpUtil.getInstance();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) => runApp(const MyApp()));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in a Flutter IDE). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Platform.isAndroid ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
+    return MultiProvider(
+      providers: [
+        // ChangeNotifierProvider<UserModel>(
+        //   create: (context) => UserModel(),
+        // ),
+        // ChangeNotifierProvider<assistantflutterModel>(
+        //   create: (context) => assistantflutterModel(),
+        // ),
+        ChangeNotifierProvider<CalenderModel>(
+          create: (context) => CalenderModel(),
+        ),
+      ],
+      child: MaterialApp(
+        // ignore: missing_return
+        title: AppTheme.appTitle,
+        debugShowCheckedModeBanner: false,
+        builder:EasyLoading.init(),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          textTheme: AppTheme.textTheme,
+          platform: TargetPlatform.iOS,
+        ),
+        home: Jin10HomePage()
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -76,20 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
