@@ -9,6 +9,8 @@ import 'package:assistantflutter/widgets/load_image.dart';
 import '../../app_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../routers/common_router.dart';
+
 class Jin10MainHead extends StatefulWidget implements PreferredSizeWidget {
 
   /// 底部widget

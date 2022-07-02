@@ -1,9 +1,10 @@
 import 'package:assistantflutter/net/jin10/jin10_http_util.dart';
 import 'package:assistantflutter/provider/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../widgets/friend_tabbar.dart';
 import 'calendar/calendar_page.dart';
 import 'flash/flash_page.dart';
 import 'market/market_page.dart';
@@ -24,6 +25,7 @@ class Jin10HomePageState extends State<Jin10HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     _userModel = Provider.of<UserModel>(context, listen: true);
     Jin10HttpUtil().getAllMarketListNet();
     Widget friendTabBar = FriendTabBar(

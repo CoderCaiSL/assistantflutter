@@ -15,6 +15,7 @@ import 'package:assistantflutter/widgets/statepage/view_state_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_theme.dart';
+import '../../../web_page.dart';
 
 class NewsListPage extends StatefulWidget {
   final NewsVipTab navData;

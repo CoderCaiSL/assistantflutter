@@ -1,19 +1,24 @@
 import 'dart:io';
 
 import 'package:assistantflutter/jin10/page/jin10_home_page.dart';
+import 'package:assistantflutter/util/screen_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:sp_util/sp_util.dart';
 import 'package:provider/provider.dart';
 
 import 'app_theme.dart';
 import 'provider/calendar_model.dart';
+import 'provider/user_model.dart';
+import 'routers/routers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //加密方式初始化
   await SpUtil.getInstance();
+  Routes.initRoutes();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) => runApp(const MyApp()));
 }
@@ -24,7 +29,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
@@ -35,12 +39,9 @@ class MyApp extends StatelessWidget {
     ));
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider<UserModel>(
-        //   create: (context) => UserModel(),
-        // ),
-        // ChangeNotifierProvider<assistantflutterModel>(
-        //   create: (context) => assistantflutterModel(),
-        // ),
+        ChangeNotifierProvider<UserModel>(
+          create: (context) => UserModel(),
+        ),
         ChangeNotifierProvider<CalenderModel>(
           create: (context) => CalenderModel(),
         ),

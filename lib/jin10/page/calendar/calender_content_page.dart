@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:assistantflutter/jin10/model/calendar/calendar_list_model.dart';
@@ -18,6 +17,7 @@ import 'package:assistantflutter/widgets/statepage/view_state_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_theme.dart';
+import '../../../web_page.dart';
 
 class CalenderContentPage extends StatefulWidget {
   String startTime;

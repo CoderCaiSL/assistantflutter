@@ -6,11 +6,14 @@ part of 'jin10_news_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Jin10NewsData _$Jin10NewsDataFromJson(Map<String, dynamic> json) =>
-    Jin10NewsData(
-      json['status'] as int,
-      Data.fromJson(json['data'] as Map<String, dynamic>),
-    );
+Jin10NewsData _$Jin10NewsDataFromJson(Map<String, dynamic> json) {
+  return Jin10NewsData(
+    json['status'] as int,
+    json['data'] == null
+        ? null
+        : Data.fromJson(json['data'] as Map<String, dynamic>),
+  );
+}
 
 Map<String, dynamic> _$Jin10NewsDataToJson(Jin10NewsData instance) =>
     <String, dynamic>{
@@ -18,39 +21,53 @@ Map<String, dynamic> _$Jin10NewsDataToJson(Jin10NewsData instance) =>
       'data': instance.data,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      json['total'] as int,
-      (json['list'] as List<dynamic>)
-          .map((e) => NewsItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    )
-      ..hot_block = (json['hot_block'] as List<dynamic>)
-          .map((e) => Hot_block.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..audio_block = (json['audio_block'] as List<dynamic>)
-          .map((e) => Audio_block.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..categories = (json['categories'] as List<dynamic>)
-          .map((e) => Categories.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..content_modules = (json['content_modules'] as List<dynamic>)
-          .map((e) => Content_modules.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..exclusive_report = (json['exclusive_report'] as List<dynamic>)
-          .map((e) => Exclusive_report.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..banners = (json['banners'] as List<dynamic>)
-          .map((e) => Banners.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..hot_topics =
-          Hot_topics.fromJson(json['hot_topics'] as Map<String, dynamic>)
-      ..slides = (json['slides'] as List<dynamic>)
-          .map((e) => Slides.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..listForHot = (json['listForHot'] as List<dynamic>)
-          .map((e) => NewsItem.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..top_articles = json['top_articles'] as List<dynamic>;
+Data _$DataFromJson(Map<String, dynamic> json) {
+  return Data(
+    json['total'] as int,
+    (json['list'] as List)
+        ?.map((e) =>
+            e == null ? null : NewsItem.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..hot_block = (json['hot_block'] as List)
+        ?.map((e) =>
+            e == null ? null : Hot_block.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..audio_block = (json['audio_block'] as List)
+        ?.map((e) =>
+            e == null ? null : Audio_block.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..categories = (json['categories'] as List)
+        ?.map((e) =>
+            e == null ? null : Categories.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..content_modules = (json['content_modules'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Content_modules.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..exclusive_report = (json['exclusive_report'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Exclusive_report.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..banners = (json['banners'] as List)
+        ?.map((e) =>
+            e == null ? null : Banners.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..hot_topics = json['hot_topics'] == null
+        ? null
+        : Hot_topics.fromJson(json['hot_topics'] as Map<String, dynamic>)
+    ..slides = (json['slides'] as List)
+        ?.map((e) =>
+            e == null ? null : Slides.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..listForHot = (json['listForHot'] as List)
+        ?.map((e) =>
+            e == null ? null : NewsItem.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..top_articles = json['top_articles'] as List;
+}
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'total': instance.total,
@@ -67,39 +84,41 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'top_articles': instance.top_articles,
     };
 
-NewsItem _$NewsItemFromJson(Map<String, dynamic> json) => NewsItem(
-      (json['web_thumbs'] as List<dynamic>).map((e) => e as String).toList(),
-      json['has_pdf'] as int,
-      json['topic_ids'] as List<dynamic>,
-      json['audio_duration'] as int,
-      json['bad'] as int,
-      json['source'] as String,
-      json['type'] as String,
-      json['title'] as String,
-      json['good'] as int,
-      json['source_url'] as String,
-      json['display_datetime'] as String,
-      json['id'] as int,
-      (json['category_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      json['vip'] as int,
-      (json['mobile_thumbs'] as List<dynamic>).map((e) => e as String).toList(),
-      json['introduction'] as String,
-      json['reveal_tags'] as List<dynamic>,
-      json['offset'] as int,
-      json['original_article'] as int,
-      json['elite_vip'] as int,
-      json['comment_status'] as int,
-      json['hits'] as int,
-      json['old_id'] as int,
-      json['date_format'] as int,
-      json['detail_url'] as String,
-      json['periods'] as int,
-      json['video_duration'] as int,
-    )
-      ..is_big = json['is_big'] as int
-      ..itemType = json['itemType'] as int
-      ..play_type = json['play_type'] as int
-      ..web_redirect_url = json['web_redirect_url'] as String;
+NewsItem _$NewsItemFromJson(Map<String, dynamic> json) {
+  return NewsItem(
+    (json['web_thumbs'] as List)?.map((e) => e as String)?.toList(),
+    json['has_pdf'] as int,
+    json['topic_ids'] as List,
+    json['audio_duration'] as int,
+    json['bad'] as int,
+    json['source'] as String,
+    json['type'] as String,
+    json['title'] as String,
+    json['good'] as int,
+    json['source_url'] as String,
+    json['display_datetime'] as String,
+    json['id'] as int,
+    (json['category_ids'] as List)?.map((e) => e as int)?.toList(),
+    json['vip'] as int,
+    (json['mobile_thumbs'] as List)?.map((e) => e as String)?.toList(),
+    json['introduction'] as String,
+    json['reveal_tags'] as List,
+    json['offset'] as int,
+    json['original_article'] as int,
+    json['elite_vip'] as int,
+    json['comment_status'] as int,
+    json['hits'] as int,
+    json['old_id'] as int,
+    json['date_format'] as int,
+    json['detail_url'] as String,
+    json['periods'] as int,
+    json['video_duration'] as int,
+  )
+    ..is_big = json['is_big'] as int
+    ..itemType = json['itemType'] as int
+    ..play_type = json['play_type'] as int
+    ..web_redirect_url = json['web_redirect_url'] as String;
+}
 
 Map<String, dynamic> _$NewsItemToJson(NewsItem instance) => <String, dynamic>{
       'web_thumbs': instance.webThumbs,
@@ -135,11 +154,13 @@ Map<String, dynamic> _$NewsItemToJson(NewsItem instance) => <String, dynamic>{
       'web_redirect_url': instance.web_redirect_url,
     };
 
-Banners _$BannersFromJson(Map<String, dynamic> json) => Banners(
-      json['img'] as String,
-      json['vip'] as int,
-      json['redirect_url'] as String,
-    );
+Banners _$BannersFromJson(Map<String, dynamic> json) {
+  return Banners(
+    json['img'] as String,
+    json['vip'] as int,
+    json['redirect_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$BannersToJson(Banners instance) => <String, dynamic>{
       'img': instance.img,
@@ -147,17 +168,21 @@ Map<String, dynamic> _$BannersToJson(Banners instance) => <String, dynamic>{
       'redirect_url': instance.redirect_url,
     };
 
-Hot_topics _$Hot_topicsFromJson(Map<String, dynamic> json) => Hot_topics(
-      json['title'] as String,
-      json['type'] as String,
-      (json['list'] as List<dynamic>)
-          .map((e) => HotTopicsData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['total'] as int,
-      json['page'] as int,
-      json['page_size'] as int,
-      json['index'] as int,
-    );
+Hot_topics _$Hot_topicsFromJson(Map<String, dynamic> json) {
+  return Hot_topics(
+    json['title'] as String,
+    json['type'] as String,
+    (json['list'] as List)
+        ?.map((e) => e == null
+            ? null
+            : HotTopicsData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['total'] as int,
+    json['page'] as int,
+    json['page_size'] as int,
+    json['index'] as int,
+  );
+}
 
 Map<String, dynamic> _$Hot_topicsToJson(Hot_topics instance) =>
     <String, dynamic>{
@@ -170,19 +195,23 @@ Map<String, dynamic> _$Hot_topicsToJson(Hot_topics instance) =>
       'index': instance.index,
     };
 
-Slides _$SlidesFromJson(Map<String, dynamic> json) => Slides(
-      json['id'] as int,
-      json['nav_bar_id'] as int,
-      json['title'] as String,
-      json['source_type'] as String,
-      json['source_id'] as int,
-      json['cover_img'] as String,
-      json['tag'] as String,
-      json['show_vip_flag'] as int,
-      json['source_play_type'] as int,
-      json['icon_img'] as String,
-      NewsExtra.fromJson(json['extra'] as Map<String, dynamic>),
-    );
+Slides _$SlidesFromJson(Map<String, dynamic> json) {
+  return Slides(
+    json['id'] as int,
+    json['nav_bar_id'] as int,
+    json['title'] as String,
+    json['source_type'] as String,
+    json['source_id'] as int,
+    json['cover_img'] as String,
+    json['tag'] as String,
+    json['show_vip_flag'] as int,
+    json['source_play_type'] as int,
+    json['icon_img'] as String,
+    json['extra'] == null
+        ? null
+        : NewsExtra.fromJson(json['extra'] as Map<String, dynamic>),
+  );
+}
 
 Map<String, dynamic> _$SlidesToJson(Slides instance) => <String, dynamic>{
       'id': instance.id,
@@ -198,11 +227,13 @@ Map<String, dynamic> _$SlidesToJson(Slides instance) => <String, dynamic>{
       'extra': instance.extra,
     };
 
-NewsExtra _$NewsExtraFromJson(Map<String, dynamic> json) => NewsExtra(
-      json['vip'] as int,
-      json['elite_vip'] as int,
-      json['display_datetime'] as String,
-    );
+NewsExtra _$NewsExtraFromJson(Map<String, dynamic> json) {
+  return NewsExtra(
+    json['vip'] as int,
+    json['elite_vip'] as int,
+    json['display_datetime'] as String,
+  );
+}
 
 Map<String, dynamic> _$NewsExtraToJson(NewsExtra instance) => <String, dynamic>{
       'vip': instance.vip,
@@ -210,34 +241,35 @@ Map<String, dynamic> _$NewsExtraToJson(NewsExtra instance) => <String, dynamic>{
       'display_datetime': instance.display_datetime,
     };
 
-HotTopicsData _$HotTopicsDataFromJson(Map<String, dynamic> json) =>
-    HotTopicsData(
-      json['id'],
-      json['title'] as String,
-      json['introduction'] as String,
-      json['nav_bar_id'],
-      json['web_thumb'] as String,
-      json['mobile_thumb'] as String,
-      json['is_big'],
-      json['is_hot'],
-      json['web_subscription_thumb'] as String,
-      json['mobile_subscription_thumb'] as String,
-      json['web_bg_img'] as String,
-      json['mobile_bg_img'] as String,
-      json['web_nav_bg_img'] as String,
-      json['mobile_nav_bg_img'] as String,
-      json['show_vip_flag'] as int,
-      json['type'] as String,
-      json['web_redirect_url'] as String,
-      json['is_video'],
-      json['sort'],
-      json['category_sort'],
-      json['latest_source_display_datetime'] as String,
-      json['display_datetime'] as String,
-      json['short_name'] as String,
-      json['category_name'] as String,
-      json['subscription_ids'] as List<dynamic>,
-    );
+HotTopicsData _$HotTopicsDataFromJson(Map<String, dynamic> json) {
+  return HotTopicsData(
+    json['id'],
+    json['title'] as String,
+    json['introduction'] as String,
+    json['nav_bar_id'],
+    json['web_thumb'] as String,
+    json['mobile_thumb'] as String,
+    json['is_big'],
+    json['is_hot'],
+    json['web_subscription_thumb'] as String,
+    json['mobile_subscription_thumb'] as String,
+    json['web_bg_img'] as String,
+    json['mobile_bg_img'] as String,
+    json['web_nav_bg_img'] as String,
+    json['mobile_nav_bg_img'] as String,
+    json['show_vip_flag'] as int,
+    json['type'] as String,
+    json['web_redirect_url'] as String,
+    json['is_video'],
+    json['sort'],
+    json['category_sort'],
+    json['latest_source_display_datetime'] as String,
+    json['display_datetime'] as String,
+    json['short_name'] as String,
+    json['category_name'] as String,
+    json['subscription_ids'] as List,
+  );
+}
 
 Map<String, dynamic> _$HotTopicsDataToJson(HotTopicsData instance) =>
     <String, dynamic>{
@@ -268,25 +300,28 @@ Map<String, dynamic> _$HotTopicsDataToJson(HotTopicsData instance) =>
       'subscription_ids': instance.subscription_ids,
     };
 
-Hot_block _$Hot_blockFromJson(Map<String, dynamic> json) => Hot_block(
-      json['desc'] as String,
-      json['name'] as String,
-      json['type'] as String,
-      json['money'] as String,
-      json['img_url'] as String,
-      json['intro_url'] as String,
-      json['play_type'] as int,
-      json['bg_img_url'] as String,
-      json['category_id'] as int,
-      json['display_type'] as String,
-      json['introduction'] as String,
-      json['outside_bg_img'] as String,
-      json['dark_outside_bg_img'] as String,
-      (json['list'] as List<dynamic>)
-          .map((e) => NewsItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['total'] as int,
-    );
+Hot_block _$Hot_blockFromJson(Map<String, dynamic> json) {
+  return Hot_block(
+    json['desc'] as String,
+    json['name'] as String,
+    json['type'] as String,
+    json['money'] as String,
+    json['img_url'] as String,
+    json['intro_url'] as String,
+    json['play_type'] as int,
+    json['bg_img_url'] as String,
+    json['category_id'] as int,
+    json['display_type'] as String,
+    json['introduction'] as String,
+    json['outside_bg_img'] as String,
+    json['dark_outside_bg_img'] as String,
+    (json['list'] as List)
+        ?.map((e) =>
+            e == null ? null : NewsItem.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['total'] as int,
+  );
+}
 
 Map<String, dynamic> _$Hot_blockToJson(Hot_block instance) => <String, dynamic>{
       'desc': instance.desc,
@@ -306,30 +341,33 @@ Map<String, dynamic> _$Hot_blockToJson(Hot_block instance) => <String, dynamic>{
       'total': instance.total,
     };
 
-Categories _$CategoriesFromJson(Map<String, dynamic> json) => Categories(
-      json['icon_img'] as String,
-      json['name'] as String,
-      json['date_format'] as int,
-      json['id'] as int,
-      json['p_id'] as int,
-      (json['tags'] as List<dynamic>)
-          .map((e) => Tags.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    )
-      ..type = json['type'] as String
-      ..cid = json['cid'] as int
-      ..category_id = json['category_id'] as String
-      ..list = (json['list'] as List<dynamic>)
-          .map((e) => NewsItem.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..total = json['total'] as int
-      ..subscription_ids = (json['subscription_ids'] as List<dynamic>)
-          .map((e) => e as int)
-          .toList()
-      ..play_type = json['play_type'] as int
-      ..show_vip_flag = json['show_vip_flag'] as int
-      ..bg_img = json['bg_img'] as String
-      ..hits = json['hits'] as int;
+Categories _$CategoriesFromJson(Map<String, dynamic> json) {
+  return Categories(
+    json['icon_img'] as String,
+    json['name'] as String,
+    json['date_format'] as int,
+    json['id'] as int,
+    json['p_id'] as int,
+    (json['tags'] as List)
+        ?.map(
+            (e) => e == null ? null : Tags.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..type = json['type'] as String
+    ..cid = json['cid'] as int
+    ..category_id = json['category_id'] as String
+    ..list = (json['list'] as List)
+        ?.map((e) =>
+            e == null ? null : NewsItem.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..total = json['total'] as int
+    ..subscription_ids =
+        (json['subscription_ids'] as List)?.map((e) => e as int)?.toList()
+    ..play_type = json['play_type'] as int
+    ..show_vip_flag = json['show_vip_flag'] as int
+    ..bg_img = json['bg_img'] as String
+    ..hits = json['hits'] as int;
+}
 
 Map<String, dynamic> _$CategoriesToJson(Categories instance) =>
     <String, dynamic>{
@@ -351,30 +389,35 @@ Map<String, dynamic> _$CategoriesToJson(Categories instance) =>
       'hits': instance.hits,
     };
 
-Tags _$TagsFromJson(Map<String, dynamic> json) => Tags(
-      json['name'] as String,
-      json['id'] as int,
-    );
+Tags _$TagsFromJson(Map<String, dynamic> json) {
+  return Tags(
+    json['name'] as String,
+    json['id'] as int,
+  );
+}
 
 Map<String, dynamic> _$TagsToJson(Tags instance) => <String, dynamic>{
       'name': instance.name,
       'id': instance.id,
     };
 
-Audio_block _$Audio_blockFromJson(Map<String, dynamic> json) => Audio_block(
-      json['desc'] as String,
-      json['name'] as String,
-      json['type'] as String,
-      json['money'] as String,
-      json['img_url'] as String,
-      json['bg_img_url'] as String,
-      json['category_id'] as int,
-      json['introduction'] as String,
-      (json['list'] as List<dynamic>)
-          .map((e) => AudioItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['total'] as int,
-    );
+Audio_block _$Audio_blockFromJson(Map<String, dynamic> json) {
+  return Audio_block(
+    json['desc'] as String,
+    json['name'] as String,
+    json['type'] as String,
+    json['money'] as String,
+    json['img_url'] as String,
+    json['bg_img_url'] as String,
+    json['category_id'] as int,
+    json['introduction'] as String,
+    (json['list'] as List)
+        ?.map((e) =>
+            e == null ? null : AudioItem.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['total'] as int,
+  );
+}
 
 Map<String, dynamic> _$Audio_blockToJson(Audio_block instance) =>
     <String, dynamic>{
@@ -390,36 +433,39 @@ Map<String, dynamic> _$Audio_blockToJson(Audio_block instance) =>
       'total': instance.total,
     };
 
-AudioItem _$AudioItemFromJson(Map<String, dynamic> json) => AudioItem(
-      (json['web_thumbs'] as List<dynamic>).map((e) => e as String).toList(),
-      json['topic_ids'] as List<dynamic>,
-      json['audio_duration'] as int,
-      json['bad'] as int,
-      json['type'] as String,
-      json['book_name'] as String,
-      json['title'] as String,
-      json['good'] as int,
-      json['display_datetime'] as String,
-      json['periods'] as int,
-      json['id'] as int,
-      (json['category_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      (json['categories'] as List<dynamic>)
-          .map((e) => Categories.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['vip'] as int,
-      (json['mobile_thumbs'] as List<dynamic>).map((e) => e as String).toList(),
-      json['introduction'] as String,
-      json['offset'] as int,
-      json['original_article'] as int,
-      json['narrator_name'] as String,
-      json['elite_vip'] as int,
-      json['comment_status'] as int,
-      json['hits'] as int,
-      json['play_type'] as int,
-      json['date_format'] as int,
-      json['quarter'] as String,
-      json['detail_url'] as String,
-    );
+AudioItem _$AudioItemFromJson(Map<String, dynamic> json) {
+  return AudioItem(
+    (json['web_thumbs'] as List)?.map((e) => e as String)?.toList(),
+    json['topic_ids'] as List,
+    json['audio_duration'] as int,
+    json['bad'] as int,
+    json['type'] as String,
+    json['book_name'] as String,
+    json['title'] as String,
+    json['good'] as int,
+    json['display_datetime'] as String,
+    json['periods'] as int,
+    json['id'] as int,
+    (json['category_ids'] as List)?.map((e) => e as int)?.toList(),
+    (json['categories'] as List)
+        ?.map((e) =>
+            e == null ? null : Categories.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['vip'] as int,
+    (json['mobile_thumbs'] as List)?.map((e) => e as String)?.toList(),
+    json['introduction'] as String,
+    json['offset'] as int,
+    json['original_article'] as int,
+    json['narrator_name'] as String,
+    json['elite_vip'] as int,
+    json['comment_status'] as int,
+    json['hits'] as int,
+    json['play_type'] as int,
+    json['date_format'] as int,
+    json['quarter'] as String,
+    json['detail_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$AudioItemToJson(AudioItem instance) => <String, dynamic>{
       'web_thumbs': instance.web_thumbs,
@@ -450,17 +496,20 @@ Map<String, dynamic> _$AudioItemToJson(AudioItem instance) => <String, dynamic>{
       'detail_url': instance.detail_url,
     };
 
-Content_modules _$Content_modulesFromJson(Map<String, dynamic> json) =>
-    Content_modules(
-      json['mode'] as String,
-      json['type'] as String,
-      Extra.fromJson(json['extra'] as Map<String, dynamic>),
-      json['title'] as String,
-      json['page_size'] as int,
-      json['nav_bar_id'] as int,
-      (json['category_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      json['display_type'] as String,
-    );
+Content_modules _$Content_modulesFromJson(Map<String, dynamic> json) {
+  return Content_modules(
+    json['mode'] as String,
+    json['type'] as String,
+    json['extra'] == null
+        ? null
+        : Extra.fromJson(json['extra'] as Map<String, dynamic>),
+    json['title'] as String,
+    json['page_size'] as int,
+    json['nav_bar_id'] as int,
+    (json['category_ids'] as List)?.map((e) => e as int)?.toList(),
+    json['display_type'] as String,
+  );
+}
 
 Map<String, dynamic> _$Content_modulesToJson(Content_modules instance) =>
     <String, dynamic>{
@@ -474,29 +523,37 @@ Map<String, dynamic> _$Content_modulesToJson(Content_modules instance) =>
       'display_type': instance.display_type,
     };
 
-Extra _$ExtraFromJson(Map<String, dynamic> json) => Extra(
-      (json['columns'] as List<dynamic>)
-          .map((e) => Columns.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['bg_img_url'] as String,
-    );
+Extra _$ExtraFromJson(Map<String, dynamic> json) {
+  return Extra(
+    (json['columns'] as List)
+        ?.map((e) =>
+            e == null ? null : Columns.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['bg_img_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$ExtraToJson(Extra instance) => <String, dynamic>{
       'columns': instance.columns,
       'bg_img_url': instance.bg_img_url,
     };
 
-Columns _$ColumnsFromJson(Map<String, dynamic> json) => Columns(
-      Btn.fromJson(json['btn'] as Map<String, dynamic>),
-      json['type'] as String,
-      json['intro'] as String,
-      json['title'] as String,
-      (json['subcolumns'] as List<dynamic>)
-          .map((e) => Subcolumns.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      (json['category_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      json['icon_img_url'] as String,
-    );
+Columns _$ColumnsFromJson(Map<String, dynamic> json) {
+  return Columns(
+    json['btn'] == null
+        ? null
+        : Btn.fromJson(json['btn'] as Map<String, dynamic>),
+    json['type'] as String,
+    json['intro'] as String,
+    json['title'] as String,
+    (json['subcolumns'] as List)
+        ?.map((e) =>
+            e == null ? null : Subcolumns.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    (json['category_ids'] as List)?.map((e) => e as int)?.toList(),
+    json['icon_img_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$ColumnsToJson(Columns instance) => <String, dynamic>{
       'btn': instance.btn,
@@ -508,23 +565,27 @@ Map<String, dynamic> _$ColumnsToJson(Columns instance) => <String, dynamic>{
       'icon_img_url': instance.icon_img_url,
     };
 
-Btn _$BtnFromJson(Map<String, dynamic> json) => Btn(
-      json['title'] as String,
-      json['redirect_url'] as String,
-    );
+Btn _$BtnFromJson(Map<String, dynamic> json) {
+  return Btn(
+    json['title'] as String,
+    json['redirect_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$BtnToJson(Btn instance) => <String, dynamic>{
       'title': instance.title,
       'redirect_url': instance.redirect_url,
     };
 
-Subcolumns _$SubcolumnsFromJson(Map<String, dynamic> json) => Subcolumns(
-      json['type'] as String,
-      json['intro'] as String,
-      json['title'] as String,
-      (json['category_ids'] as List<dynamic>).map((e) => e as int).toList(),
-      json['icon_img_url'] as String,
-    );
+Subcolumns _$SubcolumnsFromJson(Map<String, dynamic> json) {
+  return Subcolumns(
+    json['type'] as String,
+    json['intro'] as String,
+    json['title'] as String,
+    (json['category_ids'] as List)?.map((e) => e as int)?.toList(),
+    json['icon_img_url'] as String,
+  );
+}
 
 Map<String, dynamic> _$SubcolumnsToJson(Subcolumns instance) =>
     <String, dynamic>{
@@ -535,17 +596,18 @@ Map<String, dynamic> _$SubcolumnsToJson(Subcolumns instance) =>
       'icon_img_url': instance.icon_img_url,
     };
 
-Exclusive_report _$Exclusive_reportFromJson(Map<String, dynamic> json) =>
-    Exclusive_report(
-      json['name'] as String,
-      json['type'] as String,
-      json['img_url'] as String,
-      json['icon_url'] as String,
-      json['category_id'] as int,
-      json['dark_img_url'] as String,
-      json['introduction'] as String,
-      json['subcategories'] as List<dynamic>,
-    );
+Exclusive_report _$Exclusive_reportFromJson(Map<String, dynamic> json) {
+  return Exclusive_report(
+    json['name'] as String,
+    json['type'] as String,
+    json['img_url'] as String,
+    json['icon_url'] as String,
+    json['category_id'] as int,
+    json['dark_img_url'] as String,
+    json['introduction'] as String,
+    json['subcategories'] as List,
+  );
+}
 
 Map<String, dynamic> _$Exclusive_reportToJson(Exclusive_report instance) =>
     <String, dynamic>{

@@ -3,6 +3,7 @@ import 'package:assistantflutter/model/bean/jin10/market_data.dart';
 import 'package:assistantflutter/net/jin10/jin10_http_util.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_theme.dart';
 import 'market_list_page.dart';

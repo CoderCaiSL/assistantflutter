@@ -249,16 +249,13 @@ class ViewStateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
+    return CupertinoButton(
       child: child ??
           Text(
             textData ?? "重试",
             style: TextStyle(wordSpacing: 5),
           ),
-      textColor: Colors.grey,
-      splashColor: Theme.of(context).splashColor,
       onPressed: onPressed,
-      highlightedBorderColor: Theme.of(context).splashColor,
     );
   }
 }

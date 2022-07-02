@@ -14,6 +14,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'dart:convert' as convert;
 
 import '../dio_log_interceptor.dart';

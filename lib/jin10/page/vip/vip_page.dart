@@ -1,4 +1,5 @@
 import 'package:assistantflutter/jin10/model/nav/nav_model.dart';
+import 'package:assistantflutter/jin10/page/vip/vip_list_page.dart';
 import 'package:assistantflutter/jin10/widget/jin10_main_head.dart';
 import 'package:assistantflutter/model/bean/jin10/news_vip_tab_data.dart';
 import 'package:assistantflutter/widgets/statepage/view_state_widget.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_theme.dart';
+import '../../../web_page.dart';
+import '../../../widgets/statepage/provider_widget.dart';
+import '../news/video_list_page.dart';
 
 
 class VipPage extends StatefulWidget {

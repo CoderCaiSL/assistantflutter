@@ -7,7 +7,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:assistantflutter/app_theme.dart';
-import 'package:assistantflutter/images_list_page.dart';
 import 'package:assistantflutter/jin10/model/flash/flash_list_model.dart';
 import 'package:assistantflutter/jin10/page/flash/live_crad_page.dart';
 import 'package:assistantflutter/model/bean/jin10/jin10_flash_data.dart';
@@ -20,9 +19,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:html/parser.dart' as htmlparser;
 import 'package:html/dom.dart' as dom;
 import 'package:assistantflutter/util/common_date_utils.dart';
-import 'package:assistantflutter/widgets/scroll_index_widget.dart';
 
 import '../../../web_page.dart';
+import '../../../widgets/images_list_page.dart';
 
 class FlashListPage extends StatefulWidget {
   final NavData navData;

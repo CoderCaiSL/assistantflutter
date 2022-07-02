@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tourism/widgets/common_appbar.dart';
 
-import '../app_theme.dart';
+import '../widgets/common_appbar.dart';
 
 class BaseWidgetState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver {
 

@@ -1,4 +1,3 @@
-import 'package:assistantflutter/model/bean/jin10/nav_tab_data.dart';
 import 'package:assistantflutter/net/jin10/jin10_http_util.dart';
 import 'package:assistantflutter/widgets/statepage/view_state_model.dart';
 

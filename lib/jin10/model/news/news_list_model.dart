@@ -1,10 +1,8 @@
  import 'package:common_utils/common_utils.dart';
-import 'package:assistantflutter/model/bean/jin10/jin10_flash_data.dart';
 import 'package:assistantflutter/model/bean/jin10/jin10_news_data.dart';
 import 'package:assistantflutter/model/bean/jin10/news_vip_tab_data.dart';
 import 'package:assistantflutter/net/jin10/jin10_http_util.dart';
 import 'package:assistantflutter/widgets/statepage/view_state_refresh_list_model.dart';
-import 'package:assistantflutter/widgets/statepage/view_state_refresh_list_time_model.dart';
 
 class NewsListModel extends ViewStateRefreshListModel{
 

@@ -6,16 +6,21 @@ part of 'market_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MarketData _$MarketDataFromJson(Map<String, dynamic> json) => MarketData(
-      (json['all_exchange'] as List<dynamic>)
-          .map((e) => All_exchange.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      (json['all_stock'] as List<dynamic>)
-          .map((e) => All_stock.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    )..all_type = (json['all_type'] as List<dynamic>)
-        .map((e) => All_type.fromJson(e as Map<String, dynamic>))
-        .toList();
+MarketData _$MarketDataFromJson(Map<String, dynamic> json) {
+  return MarketData(
+    (json['all_exchange'] as List)
+        ?.map((e) =>
+            e == null ? null : All_exchange.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    (json['all_stock'] as List)
+        ?.map((e) =>
+            e == null ? null : All_stock.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )..all_type = (json['all_type'] as List)
+      ?.map((e) =>
+          e == null ? null : All_type.fromJson(e as Map<String, dynamic>))
+      ?.toList();
+}
 
 Map<String, dynamic> _$MarketDataToJson(MarketData instance) =>
     <String, dynamic>{
@@ -24,13 +29,16 @@ Map<String, dynamic> _$MarketDataToJson(MarketData instance) =>
       'all_type': instance.all_type,
     };
 
-All_type _$All_typeFromJson(Map<String, dynamic> json) => All_type(
-      (json['list'] as List<dynamic>)
-          .map((e) => Exchange.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['name'] as String,
-      (json['recommand'] as List<dynamic>).map((e) => e as String).toList(),
-    );
+All_type _$All_typeFromJson(Map<String, dynamic> json) {
+  return All_type(
+    (json['list'] as List)
+        ?.map((e) =>
+            e == null ? null : Exchange.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['name'] as String,
+    (json['recommand'] as List)?.map((e) => e as String)?.toList(),
+  );
+}
 
 Map<String, dynamic> _$All_typeToJson(All_type instance) => <String, dynamic>{
       'list': instance.list,
@@ -38,12 +46,14 @@ Map<String, dynamic> _$All_typeToJson(All_type instance) => <String, dynamic>{
       'recommand': instance.recommand,
     };
 
-Exchange _$ExchangeFromJson(Map<String, dynamic> json) => Exchange(
-      (json['exchange'] as List<dynamic>).map((e) => e as String).toList(),
-      json['icon'] as String,
-      json['showname'] as String,
-      (json['subclass'] as List<dynamic>).map((e) => e as String).toList(),
-    );
+Exchange _$ExchangeFromJson(Map<String, dynamic> json) {
+  return Exchange(
+    (json['exchange'] as List)?.map((e) => e as String)?.toList(),
+    json['icon'] as String,
+    json['showname'] as String,
+    (json['subclass'] as List)?.map((e) => e as String)?.toList(),
+  );
+}
 
 Map<String, dynamic> _$ExchangeToJson(Exchange instance) => <String, dynamic>{
       'exchange': instance.exchange,
@@ -52,10 +62,12 @@ Map<String, dynamic> _$ExchangeToJson(Exchange instance) => <String, dynamic>{
       'subclass': instance.subclass,
     };
 
-All_exchange _$All_exchangeFromJson(Map<String, dynamic> json) => All_exchange(
-      json['cn'] as String,
-      json['name'] as String,
-    );
+All_exchange _$All_exchangeFromJson(Map<String, dynamic> json) {
+  return All_exchange(
+    json['cn'] as String,
+    json['name'] as String,
+  );
+}
 
 Map<String, dynamic> _$All_exchangeToJson(All_exchange instance) =>
     <String, dynamic>{
@@ -63,14 +75,16 @@ Map<String, dynamic> _$All_exchangeToJson(All_exchange instance) =>
       'name': instance.name,
     };
 
-All_stock _$All_stockFromJson(Map<String, dynamic> json) => All_stock(
-      json['cn'] as String,
-      json['code'] as String,
-      json['decimal'] as int,
-      json['effect'] as int,
-      json['exchange'] as String,
-      json['ntype'] as String,
-    );
+All_stock _$All_stockFromJson(Map<String, dynamic> json) {
+  return All_stock(
+    json['cn'] as String,
+    json['code'] as String,
+    json['decimal'] as int,
+    json['effect'] as int,
+    json['exchange'] as String,
+    json['ntype'] as String,
+  );
+}
 
 Map<String, dynamic> _$All_stockToJson(All_stock instance) => <String, dynamic>{
       'cn': instance.cn,
@@ -81,12 +95,15 @@ Map<String, dynamic> _$All_stockToJson(All_stock instance) => <String, dynamic>{
       'ntype': instance.ntype,
     };
 
-MarketCateItem _$MarketCateItemFromJson(Map<String, dynamic> json) =>
-    MarketCateItem()
-      ..cate = json['cate'] as String
-      ..subItems = (json['subItems'] as List<dynamic>)
-          .map((e) => MarketDetailItem.fromJson(e as Map<String, dynamic>))
-          .toList();
+MarketCateItem _$MarketCateItemFromJson(Map<String, dynamic> json) {
+  return MarketCateItem()
+    ..cate = json['cate'] as String
+    ..subItems = (json['subItems'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MarketDetailItem.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
 
 Map<String, dynamic> _$MarketCateItemToJson(MarketCateItem instance) =>
     <String, dynamic>{
@@ -94,21 +111,22 @@ Map<String, dynamic> _$MarketCateItemToJson(MarketCateItem instance) =>
       'subItems': instance.subItems,
     };
 
-MarketDetailItem _$MarketDetailItemFromJson(Map<String, dynamic> json) =>
-    MarketDetailItem(
-      json['name'] as String,
-      json['code'] as String,
-      json['exchange'] as String,
-      json['d'] as int,
-    )
-      ..strLatest = json['strLatest'] as String
-      ..strPer = json['strPer'] as String
-      ..strAmount = json['strAmount'] as String
-      ..close = (json['close'] as num).toDouble()
-      ..open = (json['open'] as num).toDouble()
-      ..hight = (json['hight'] as num).toDouble()
-      ..prices = (json['prices'] as num).toDouble()
-      ..gains = (json['gains'] as num).toDouble();
+MarketDetailItem _$MarketDetailItemFromJson(Map<String, dynamic> json) {
+  return MarketDetailItem(
+    json['name'] as String,
+    json['code'] as String,
+    json['exchange'] as String,
+    json['d'] as int,
+  )
+    ..strLatest = json['strLatest'] as String
+    ..strPer = json['strPer'] as String
+    ..strAmount = json['strAmount'] as String
+    ..close = (json['close'] as num)?.toDouble()
+    ..open = (json['open'] as num)?.toDouble()
+    ..hight = (json['hight'] as num)?.toDouble()
+    ..prices = (json['prices'] as num)?.toDouble()
+    ..gains = (json['gains'] as num)?.toDouble();
+}
 
 Map<String, dynamic> _$MarketDetailItemToJson(MarketDetailItem instance) =>
     <String, dynamic>{
@@ -126,15 +144,20 @@ Map<String, dynamic> _$MarketDetailItemToJson(MarketDetailItem instance) =>
       'gains': instance.gains,
     };
 
-MarketRootData _$MarketRootDataFromJson(Map<String, dynamic> json) =>
-    MarketRootData()
-      ..commends = (json['commends'] as List<dynamic>)
-          .map((e) => MarketDetailItem.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..cates = (json['cates'] as List<dynamic>)
-          .map((e) => MarketCateItem.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..cateName = json['cateName'] as String;
+MarketRootData _$MarketRootDataFromJson(Map<String, dynamic> json) {
+  return MarketRootData()
+    ..commends = (json['commends'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MarketDetailItem.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..cates = (json['cates'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MarketCateItem.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..cateName = json['cateName'] as String;
+}
 
 Map<String, dynamic> _$MarketRootDataToJson(MarketRootData instance) =>
     <String, dynamic>{
