@@ -97,6 +97,6 @@ class WebPageState extends State<WebPage> with AutomaticKeepAliveClientMixin {
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => widget.hideTitle;
+  bool get wantKeepAlive => true;
 }
 

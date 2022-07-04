@@ -11,15 +11,15 @@ class UserModel extends ChangeNotifier {
   User get user => _user;
 
   UserModel() {
-    String str = SpUtil.getString(Constant.user);
-    Map<String, dynamic> userJson;
-    if(str == ''){
-      _user = null;
-    }else{
-      userJson = convert.jsonDecode(str);
-      User tmp = User.fromJson(userJson);
-      _user = tmp;
-    }
+    // String str = SpUtil.getString(Constant.user);
+    // Map<String, dynamic> userJson;
+    // if(str == ''){
+    //   _user = null;
+    // }else{
+    //   userJson = convert.jsonDecode(str);
+    //   User tmp = User.fromJson(userJson);
+    //   _user = tmp;
+    // }
   }
 
 
@@ -28,13 +28,13 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
     String json = convert.jsonEncode(user.toJson());
     print("用户信息"+json);
-    SpUtil.putString(Constant.user,json);
+    // SpUtil.putString(Constant.user,json);
   }
 
   /// 清除持久化的用户数据
   clearUser() {
     _user = null;
     notifyListeners();
-    SpUtil.remove(Constant.user);
+    // SpUtil.remove(Constant.user);
   }
 }

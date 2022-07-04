@@ -22,6 +22,7 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin, Autom
   NavModel _model;
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     return ProviderWidget<NavModel> (
         autoDispose: false,
         model: NavModel(NavModel.type_news),

@@ -10,18 +10,78 @@ import 'package:sp_util/sp_util.dart';
 import 'package:provider/provider.dart';
 
 import 'app_theme.dart';
+import 'jin10/page/news/news_page.dart';
 import 'provider/calendar_model.dart';
 import 'provider/user_model.dart';
 import 'routers/routers.dart';
+import 'widgets/selectText.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  //加密方式初始化
-  await SpUtil.getInstance();
-  Routes.initRoutes();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
-      .then((_) => runApp(const MyApp()));
+  runApp(const MyApp());
 }
+
+@pragma("vm:entry-point")
+void jin10MainView() async {
+  //加密方式初始化
+  runApp(const MyApp());
+}
+
+@pragma("vm:entry-point")
+void showCell() {
+  runApp(MaterialApp(
+    home: Text("测试"),
+  ));
+}
+
+@pragma("vm:entry-point")
+void showText(){
+  runApp(
+    MaterialApp(
+    home: SelectText(
+      isSelect: true,
+      title: '参考',
+      norImageStr:"jin10/news",
+      selImageStr: "jin10/news_h",
+    ),
+  ));
+}
+
+@pragma("vm:entry-point")
+void showHome(){
+  runApp(MyApp2());
+}
+
+void showNewsPage(){
+  runApp(MaterialApp(
+    home: NewsPage(),
+  ));
+}
+
+
+class MyApp2 extends StatelessWidget {
+  const MyApp2({Key key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or press Run > Flutter Hot Reload in a Flutter IDE). Notice that the
+        // counter didn't reset back to zero; the application is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
@@ -29,6 +89,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    WidgetsFlutterBinding.ensureInitialized();
+    Routes.initRoutes();
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,

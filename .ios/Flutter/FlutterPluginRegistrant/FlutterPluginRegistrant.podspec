@@ -21,6 +21,7 @@ Depends on all your plugins, and provides a function to register them.
   s.dependency 'Flutter'
   s.dependency 'connectivity'
   s.dependency 'path_provider'
+  s.dependency 'sensors'
   s.dependency 'shared_preferences'
   s.dependency 'sqflite'
   s.dependency 'video_player'

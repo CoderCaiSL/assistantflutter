@@ -19,6 +19,7 @@ class SelectText extends StatelessWidget {
   final String selImageStr;
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     // ScreenUtil.init(context);
     return Container(
       // padding: EdgeInsets.symmetric(vertical: 12),
