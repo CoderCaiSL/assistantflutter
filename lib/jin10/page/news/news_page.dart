@@ -12,7 +12,13 @@ import 'news_list_page.dart';
 import 'video_list_page.dart';
 
 class NewsPage extends StatefulWidget {
-  @override
+
+  final bool hideAppBar;
+
+  const NewsPage({Key key, this.hideAppBar = false}) : super(key: key);
+
+
+@override
   NewsPageState createState() => new NewsPageState();
 }
 
@@ -46,7 +52,7 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin, Autom
               });
             });
           return Scaffold(
-            appBar: Jin10MainHead(),
+            appBar: widget.hideAppBar ? null : Jin10MainHead(),
             body: DefaultTabController(
               length: navTabData.data.list.length,
               child: Scaffold(

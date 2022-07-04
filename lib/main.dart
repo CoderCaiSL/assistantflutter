@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:assistantflutter/jin10/page/flash/flash_page.dart';
 import 'package:assistantflutter/jin10/page/jin10_home_page.dart';
+import 'package:assistantflutter/jin10/page/market/market_page.dart';
+import 'package:assistantflutter/jin10/page/vip/vip_page.dart';
 import 'package:assistantflutter/util/screen_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +13,7 @@ import 'package:sp_util/sp_util.dart';
 import 'package:provider/provider.dart';
 
 import 'app_theme.dart';
+import 'jin10/page/calendar/calendar_page.dart';
 import 'jin10/page/news/news_page.dart';
 import 'provider/calendar_model.dart';
 import 'provider/user_model.dart';
@@ -51,9 +55,31 @@ void showHome(){
   runApp(MyApp2());
 }
 
+void showFlashPage(){
+  runApp(MaterialApp(
+    home: NewsPage(hideAppBar: true),
+  ));
+}
 void showNewsPage(){
   runApp(MaterialApp(
-    home: NewsPage(),
+    home: FlashPage(hideAppBar: true),
+  ));
+}
+
+void showVipPage(){
+  runApp(MaterialApp(
+    home: VipPage(hideAppBar: true),
+  ));
+}
+
+void showMarketPage(){
+  runApp(MaterialApp(
+    home: MarketPage(hideAppBar: true),
+  ));
+}
+void showCalendarPage(){
+  runApp(MaterialApp(
+    home: CalendarPage(),
   ));
 }
 
@@ -123,6 +149,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key, this.title}) : super(key: key);

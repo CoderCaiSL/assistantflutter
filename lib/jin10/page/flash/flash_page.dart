@@ -11,6 +11,11 @@ import '../../../widgets/statepage/provider_widget.dart';
 import 'flash_list_page.dart';
 
 class FlashPage extends StatefulWidget {
+
+ final bool hideAppBar;
+
+  const FlashPage({Key key, this.hideAppBar = false}) : super(key: key);
+
   @override
   FlashPageState createState() => new FlashPageState();
 }
@@ -46,7 +51,7 @@ class FlashPageState extends State<FlashPage> with TickerProviderStateMixin,Auto
               });
             });
           return Scaffold(
-            appBar: Jin10MainHead(),
+            appBar: widget.hideAppBar ? null : Jin10MainHead(),
             body: DefaultTabController(
               length: navTabData.data.length,
               child: Scaffold(

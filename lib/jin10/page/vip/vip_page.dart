@@ -14,6 +14,12 @@ import '../news/video_list_page.dart';
 
 
 class VipPage extends StatefulWidget {
+
+  final bool hideAppBar;
+
+  const VipPage({Key key, this.hideAppBar = false}) : super(key: key);
+
+
   @override
   VipPageState createState() => new VipPageState();
 }
@@ -49,7 +55,7 @@ class VipPageState extends State<VipPage> with TickerProviderStateMixin, Automat
               });
             });
           return Scaffold(
-            appBar: Jin10MainHead(),
+            appBar: widget.hideAppBar ? null : Jin10MainHead(),
             body: DefaultTabController(
               length: navTabData.data.list.length,
               child: Scaffold(

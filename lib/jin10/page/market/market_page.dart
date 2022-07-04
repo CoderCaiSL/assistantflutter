@@ -9,6 +9,10 @@ import '../../../app_theme.dart';
 import 'market_list_page.dart';
 
 class MarketPage extends StatefulWidget {
+  final bool hideAppBar;
+
+  const MarketPage({Key key, this.hideAppBar = false}) : super(key: key);
+
   @override
   MarketPageState createState() => new MarketPageState();
 }
@@ -24,7 +28,7 @@ class MarketPageState extends State<MarketPage> with TickerProviderStateMixin,Au
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: Jin10MainHead(),
+      appBar: widget.hideAppBar ? null : Jin10MainHead(),
       body: DefaultTabController(
         length: data.length,
         child: Scaffold(
