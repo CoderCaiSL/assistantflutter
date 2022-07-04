@@ -28,6 +28,7 @@ class FlashPageState extends State<FlashPage> with TickerProviderStateMixin,Auto
 
   @override
   Widget build(BuildContext context) {
+
     return ProviderWidget<NavModel> (
         autoDispose: false,
         model: NavModel(NavModel.type_flash),

@@ -32,6 +32,7 @@ class VipPageState extends State<VipPage> with TickerProviderStateMixin, Automat
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     return ProviderWidget<NavModel> (
         autoDispose: false,
         model: NavModel(NavModel.type_vip),

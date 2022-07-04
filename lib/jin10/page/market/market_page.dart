@@ -26,7 +26,7 @@ class MarketPageState extends State<MarketPage> with TickerProviderStateMixin,Au
 
   @override
   Widget build(BuildContext context) {
-
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     return Scaffold(
       appBar: widget.hideAppBar ? null : Jin10MainHead(),
       body: DefaultTabController(

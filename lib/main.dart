@@ -57,12 +57,12 @@ void showHome(){
 
 void showFlashPage(){
   runApp(MaterialApp(
-    home: NewsPage(hideAppBar: true),
+    home: FlashPage(hideAppBar: true),
   ));
 }
 void showNewsPage(){
   runApp(MaterialApp(
-    home: FlashPage(hideAppBar: true),
+    home: NewsPage(hideAppBar: true),
   ));
 }
 

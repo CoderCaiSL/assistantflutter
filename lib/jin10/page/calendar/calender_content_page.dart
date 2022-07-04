@@ -51,6 +51,7 @@ class CalenderContentPageState extends State<CalenderContentPage>  with TickerPr
       _model.endTime = endTime;
       _model.type = type;
     }
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     return ProviderWidget<CalendarListModel> (
       autoDispose: false,
       model: _model,
