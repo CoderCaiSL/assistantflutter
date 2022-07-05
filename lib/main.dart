@@ -18,6 +18,7 @@ import 'jin10/page/news/news_page.dart';
 import 'provider/calendar_model.dart';
 import 'provider/user_model.dart';
 import 'routers/routers.dart';
+import 'widgets/flutter_nav.dart';
 import 'widgets/selectText.dart';
 
 void main() async {
@@ -81,6 +82,10 @@ void showCalendarPage(){
   runApp(MaterialApp(
     home: CalendarPage(),
   ));
+}
+
+void showFlutterNavView(){
+  runApp(FlutterView());
 }
 
 

@@ -35,7 +35,6 @@ class FlashListPage extends StatefulWidget {
 class FlashListPageState extends State<FlashListPage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
-
   FlashListModel _model;
   int index = 0;
 
@@ -87,6 +86,7 @@ class FlashListPageState extends State<FlashListPage> with AutomaticKeepAliveCli
     });
     return target;
   }
+
   @override
   Widget build(BuildContext context) {
     return ProviderWidget<FlashListModel> (

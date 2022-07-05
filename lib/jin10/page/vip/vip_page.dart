@@ -121,11 +121,11 @@ class VipPageState extends State<VipPage> with TickerProviderStateMixin, Automat
 
   Widget getListPage(NewsVipTab navData) {
     if ('video_home' == navData.display_type) {
-      return VideosListPage(navData: navData,);
+      return VideosListPage(navData: navData,isNav: widget.hideAppBar,);
     }else if('webview' == navData.display_type){
       return WebPage(url: navData.web_redirect_url,hideTitle: true,);
     }
-    return VipListPage(navData: navData);
+    return VipListPage(navData: navData,isNav: widget.hideAppBar,);
   }
 
 

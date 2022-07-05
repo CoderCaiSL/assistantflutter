@@ -1,6 +1,7 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:assistantflutter/jin10/model/news/news_list_model.dart';
@@ -19,8 +20,9 @@ import '../../../web_page.dart';
 
 class NewsListPage extends StatefulWidget {
   final NewsVipTab navData;
+  final bool isNav;
 
-  const NewsListPage({Key key, this.navData}) : super(key: key);
+  const NewsListPage({Key key, this.navData, this.isNav}) : super(key: key);
 
   @override
   NewsListPageState createState() => new NewsListPageState();
@@ -31,7 +33,8 @@ class NewsListPageState extends State<NewsListPage> with AutomaticKeepAliveClien
   NewsListModel _model;
   Animation<double> _animation10;
   AnimationController controller;
-
+  static const BasicMessageChannel<String> platform =
+  BasicMessageChannel<String>(AppTheme.NavPathChannel, StringCodec());
 
   @override
   Widget build(BuildContext context) {
@@ -468,15 +471,38 @@ class NewsListPageState extends State<NewsListPage> with AutomaticKeepAliveClien
   Function _onItemClick(NewsItem newsItem){
     if ("news" == newsItem.type) {
       if (ObjectUtil.isNotEmpty(newsItem.web_redirect_url)) {
-        AppNavigator.push(context, WebPage(url: newsItem.web_redirect_url,));
+        if(widget.isNav){
+          _sendFlutterMessage(newsItem.web_redirect_url);
+        }else{
+          AppNavigator.push(context, WebPage(url: newsItem.web_redirect_url,));
+        }
       }  else if (ObjectUtil.isNotEmpty(newsItem.detailUrl)) {
-        AppNavigator.push(context, WebPage(url: newsItem.detailUrl,));
+        if(widget.isNav){
+          _sendFlutterMessage(newsItem.detailUrl);
+        }else{
+          AppNavigator.push(context, WebPage(url: newsItem.detailUrl,));
+        }
       }
     } else if('video' == newsItem.type){
+      if(widget.isNav){
+        _sendFlutterMessage(newsItem.id.toString());
+      }
       //AppNavigator.push(context, VideoDetailPage(id: newsItem.id.toString(),));
     }
   }
 
+
+  void _sendFlutterMessage(String msg) {
+    platform.send(msg);
+    print('_sendFlutterMessage==>:${msg}');
+  }
+
+  Future<String> _handlePlatformIncrement(String message) async {
+    print('_handlePlatformIncrement==>:${message}');
+    setState(() {
+    });
+    return "";
+  }
 
   @override
   void initState() {
@@ -484,6 +510,7 @@ class NewsListPageState extends State<NewsListPage> with AutomaticKeepAliveClien
     _animation10 = Tween(begin: 0.0, end: 1.0).animate(controller);
     controller.animateTo(1.0, duration: Duration(seconds: 3));
     super.initState();
+    platform.setMessageHandler((message) => _handlePlatformIncrement(message));
   }
 
   @override

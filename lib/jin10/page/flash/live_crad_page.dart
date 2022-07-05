@@ -21,6 +21,7 @@ class LiveCardPage extends StatefulWidget {
 
 class LiveCardPageState extends BaseWidgetState<LiveCardPage> {
   FlashItem _flashItem;
+
   @override
   Widget build(BuildContext context) {
     _flashItem = widget.flashItem;

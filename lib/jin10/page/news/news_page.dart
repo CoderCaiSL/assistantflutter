@@ -117,9 +117,9 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin, Autom
 
   Widget getListPage(NewsVipTab data){
     if ('video_home' == data.display_type) {
-      return VideosListPage(navData: data,);
+      return VideosListPage(navData: data,isNav: widget.hideAppBar,);
     }
-    return NewsListPage(navData: data,);
+    return NewsListPage(navData: data,isNav: widget.hideAppBar,);
   }
 
   @override
