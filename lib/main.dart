@@ -130,6 +130,7 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.white,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
+    SpUtil.getInstance();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<UserModel>(
@@ -154,6 +155,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 
 

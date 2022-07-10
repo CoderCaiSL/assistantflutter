@@ -81,7 +81,7 @@ class Jin10MainHeadState extends State<Jin10MainHead> {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(30.0)),
           child: InkWell(
-              child: Image.asset('assets/home/user.png',),
+              child: Image.asset('assets/images/user.png',),
                   onTap: () {
                     if(_userModel.hasUser){
                       NavigatorUtils.push(context, CommonRouter.user);

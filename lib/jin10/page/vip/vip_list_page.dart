@@ -479,7 +479,7 @@ class VipListPageState extends State<VipListPage> with AutomaticKeepAliveClientM
         newsItem.web_redirect_url : newsItem.detailUrl,));
       }
     } else if('video' == newsItem.type){
-      _sendFlutterMessage(newsItem.id.toString())
+      _sendFlutterMessage(newsItem.id.toString());
       //AppNavigator.push(context, VideoDetailPage(id: newsItem.id.toString(),));
     }
   }
