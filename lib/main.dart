@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:assistantflutter/jin10/page/flash/flash_page.dart';
 import 'package:assistantflutter/jin10/page/jin10_home_page.dart';
 import 'package:assistantflutter/jin10/page/market/market_page.dart';
+import 'package:assistantflutter/jin10/page/vip/vip_list_page.dart';
 import 'package:assistantflutter/jin10/page/vip/vip_page.dart';
 import 'package:assistantflutter/util/screen_utils.dart';
 import 'package:flutter/material.dart';

@@ -50,7 +50,7 @@ class Jin10HomePageState extends State<Jin10HomePage> {
           onPageChanged: _pageChanged,
           itemCount: _pages.length,
           itemBuilder: (context, index) => _pages[index]),
-      bottomNavigationBar: friendTabBar,
+      bottomNavigationBar : friendTabBar,
     );
   }
   void _pageChanged(int index) {

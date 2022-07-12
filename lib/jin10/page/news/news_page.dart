@@ -4,6 +4,7 @@ import 'package:assistantflutter/model/bean/jin10/news_vip_tab_data.dart';
 import 'package:assistantflutter/widgets/statepage/view_state_widget.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_theme.dart';
@@ -26,6 +27,8 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin, Autom
   TabController _controller;
   int customIndex = 0;
   NavModel _model;
+  static const BasicMessageChannel<String> platform =
+  BasicMessageChannel<String>(AppTheme.NavPathChannel, StringCodec());
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
@@ -46,6 +49,7 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin, Autom
           _controller = TabController(vsync: this,
               length: navTabData.data.list.length, initialIndex: customIndex)
             ..addListener(() {
+              platform.send("{'tabIndex':${_controller.index}");
               setState(() {
                 customIndex = _controller.index;
                 print(customIndex);

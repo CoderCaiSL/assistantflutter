@@ -28,7 +28,7 @@ class FlashPageState extends State<FlashPage> with TickerProviderStateMixin,Auto
 
   @override
   Widget build(BuildContext context) {
-
+    ScreenUtil.init(context,designSize: Size(375, 840), allowFontScaling: false);
     return ProviderWidget<NavModel> (
         autoDispose: false,
         model: NavModel(NavModel.type_flash),
